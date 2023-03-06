@@ -1,10 +1,4 @@
 
-//import { json } from "stream/consumers";
-
-/* Definimos nuestra clase Libro */
-// const fs = require ("fs");
-// const data = fs.readFileSync("./books.json", "utf8");
-// const books = JSON.parse(data)
 const fs = require('fs');
 const biblioteca: Auto [] = [];
 
@@ -23,10 +17,7 @@ constructor(marca: string, modelo: number, patente: string){
 
 
 export class RegistroDelAutomotor{
-    //  vehiculo: string;
-    //  constructor(marca: string){
-    //     this.vehiculo = marca
-    //  }
+   
     darDeAlta(marca: string, patente:string, modelo:number){
         let marcas = new Auto(marca, modelo, patente)
         biblioteca.push(marcas);
@@ -41,13 +32,7 @@ export class RegistroDelAutomotor{
         
     }
 
-//     insertarEnBiblioteca(){
-//     const data = fs.readFileSync("./registroAutos.json", "utf8");
-//     const cars = JSON.parse(data);
-//     for (let i = 0; i < cars.length; i++) {
-//     biblioteca.push(cars[i])
-//     }
-// }
+
 
      consultar(marca: string, patente: string, array: Auto[]){
          let autoEncontrado = array.find(Auto => Auto.marca === marca && Auto.patente === patente )
@@ -73,26 +58,13 @@ export class RegistroDelAutomotor{
      }
     }
 
-// let gestor = new RegistroDelAutomotor;
-// let fiat = new Auto('fiat', 1980, 'abc234');
-// let renault = new Auto("renault", 1978, "acm 178");
-// let vw = new Auto("volkswagen", 2018, "hhq 855");
-// let 
-// gestor.darDeAlta(renault);
-// gestor.darDeAlta(fiat);
-// gestor.darDeAlta(vw);
 
-// //gestor.insertarEnBiblioteca();
-// //gestor.actualizar("renault", biblioteca, "elGranReno");
 let gestor = new RegistroDelAutomotor()
 gestor.darDeAlta("fiat", "123 abc", 1999)
 console.log(biblioteca);
 gestor.darDeAlta("renault", "456 asd", 1810)
 console.log(biblioteca)
 
-// let chevrolet = new Auto("chevrolet", 1960, "zzz 111");
-// gestor.darDeAlta(chevrolet);
-// console.log(biblioteca)
 
 gestor.consultar("fiat", "123 abc", biblioteca);
 gestor.eliminar("fiat", "123 abc", biblioteca)
