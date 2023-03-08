@@ -5,8 +5,8 @@ export const biblioteca: any [] = [];
 export class RegistroDelAutomotor{
    
     darDeAlta(marca: string, patente:string, modelo:number){
-        let marcas = new Auto(marca, modelo, patente)
-        biblioteca.push(marcas);
+        let auto = new Auto(marca, modelo, patente)
+        biblioteca.push(auto);
         const datoALlevar= JSON.stringify(biblioteca);
         const llevar = fs.writeFileSync('./registroAutos.json', datoALlevar,
              {
@@ -42,6 +42,15 @@ export class RegistroDelAutomotor{
         else {
             console.log('auto ', marca, 'no ha sido eliminado');
         }
+     }
+     
+     actualizar(patente: string, newMarca: string, newModelo: number, array: any){
+        let pos: number = array.findIndex((elem: { patente: string; }) => elem.patente === patente);
+        biblioteca[pos].marca = newMarca;
+        array[pos].modelo = newModelo;
+        if (biblioteca[pos].marca === newMarca && biblioteca[pos].modelo === newModelo) {
+            console.log("Se actualizaron los datos del vehiculo con patente ", patente)
+        } else {"No se pudieron actualizar los datos"}
      }
     }
 
